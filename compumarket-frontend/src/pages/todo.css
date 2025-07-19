@@ -1,0 +1,477 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #1561F0;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  z-index: 1000;
+}
+.precio_producto {
+    font-weight: bold;
+    text-align: center;
+}
+.agregar {
+    background-color: #1561F0;
+    margin-top: 0.5rem;
+    border-radius: 20px;
+    padding: 0.2rem 0.5rem 0.5rem 0.5rem;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+.logo {
+  font-size: 1.5rem;
+}
+.CompuMarket {
+    color:white;
+    text-decoration: underline;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+.subtitulo {
+        font-weight: bold;
+        text-decoration: underline;
+        color: #131313;
+    }
+
+.productos_populares {
+    width: 100%;
+}
+.contenedor_productos_populares {
+        display: grid;
+        width: 100%;
+        margin-top: 0.5rem;
+}
+.carta {
+        width: 100%;
+        background-color: #e9ecf1;
+        padding: 1rem;
+        border-radius: 15px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.name_producto, .precio_producto, i {
+    font-size: small;
+}
+.name_producto {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.promocion {
+    margin-bottom: 2rem;
+}
+
+/*FOOTER*/
+.footer {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  padding: 3rem 1rem 1rem;
+}
+
+.footer_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  gap: 2rem;
+}
+
+.footer_section {
+  flex: 1 1 220px;
+}
+
+.footer_logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.footer_section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.footer_section p,
+.footer_section a {
+  font-size:small;
+  color: #d1d5db;
+  text-decoration: none;
+}
+
+
+.social_icons a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #d1d5db;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+
+.footer_bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  border-top: 1px solid #374151;
+  padding-top: 1rem;
+}
+
+/*SOBRE NOSOTROS*/
+.sobre-nosotros {
+background-color: #f9fafb;
+padding: 3rem 1.5rem;
+color: #1f2937;
+}
+
+.container_sobre {
+max-width: 1000px;
+margin: 0 auto;
+}
+
+.sobre-nosotros h1 {
+font-size: 2rem;
+color: #111827;
+margin-bottom: 1.5rem;
+border-left: 6px solid #38bdf8;
+padding-left: 1rem;
+}
+
+.sobre-nosotros p {
+font-size: small;
+line-height: 1.7;
+margin-bottom: 1.5rem;
+}
+
+.sobre-nosotros .intro {
+font-weight: 600;
+color: #111827;
+}
+
+.sobre-nosotros .final {
+font-weight: bold;
+color: #1e40af;
+font-size: 1.1rem;
+margin-top: 2rem;
+}
+
+/* ===== Estilos para Registro ===== */
+
+.register-main {
+  padding-top: 6rem; /* para evitar la navbar fija */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.register-form {
+  background: #e9ecf1;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.register-form .subtitulo {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #131313;
+}
+
+.register-form .form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form .form-group label {
+  margin-bottom: 0.3rem;
+  color: #131313;
+}
+
+.register-form .form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.register-form .agregar {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  background-color: #1561F0;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.register-form .agregar:hover {
+  background-color: #0d4dcf;
+}
+
+.register-form .form-footer {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: small;
+}
+
+.register-form .form-footer a {
+  color: #1561F0;
+  text-decoration: underline;
+}
+
+.pago-main {
+  padding-top: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.formulario-pago {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 700px;
+}
+
+.formulario-pago h2 {
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.btn-pagar {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #1561F0;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-pagar:hover {
+  background-color: #0d4dcf;
+}
+
+/* Accesibilidad opcional */
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+
+@media screen and (min-width: 1050px) {
+    main {
+        padding: 6rem 10rem 1.5rem 10rem;
+    }
+    
+    .contenedor_productos_populares {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .name_producto{
+        max-width: 180px;
+    }
+}
+
+/*FILTRO DE BUSQUEDA*/
+/* Estilo general de la sección productos */
+.productos {
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+/* Estilo del contenedor de filtros */
+.filtros {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Panel de filtros superior */
+.filtros > .filtro,
+.filtros > .rango-precio {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filtros > .filtro label,
+.filtros > .rango-precio label {
+    font-weight: bold;
+    min-width: 80px;
+}
+
+.filtros select,
+.filtros input[type="number"] {
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: small;
+}
+
+.rango-precio input {
+    width: 100px;
+}
+
+/* Botón Filtrar */
+.btn-filtrar {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+}
+
+.btn-filtrar:hover {
+    background-color: #2563eb;
+}
+
+
+@media (max-width: 768px) {
+    .filtros {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+
+
+/* Responsividad */
+@media screen and (max-width: 1200px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #1f2937;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  main {
+        padding: 6rem 2rem 1.5rem 2rem;
+    }
+    .contenedor_productos_populares {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+    }
+    
+    img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .name_producto{
+        max-width: 150px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    main {
+        padding: 6rem 2rem 1.5rem 2rem;
+    }
+    .contenedor_productos_populares {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+    
+    img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .name_producto{
+        max-width: 120px;
+    }
+    
+    .footer {
+        padding: 1.5rem 2rem 1.5rem 2rem;
+    }
+}
