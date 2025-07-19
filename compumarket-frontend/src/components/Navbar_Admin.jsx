@@ -34,10 +34,12 @@ return (
 <div className="logo">
 <a href="/"><p className="CompuMarket">Admin - CompuMarket+</p></a>
 </div>
-     <nav className={`nav-links ${menuActive ? 'active' : ''}`} id="navLinks">
-    <a href="/admin/productos">Gestionar Productos</a>
-    <a href="/admin/usuarios">Usuarios</a>
-    <a href="/admin/ventas">Ventas</a>
+     <nav className={nav-links ${menuActive ? 'active' : ''}} id="navLinks">
+    <a href="/productos_administrador">Productos</a>
+    <a href="/categorias_administrador">Categorias</a>
+    <a href="/marcas_administrador">Marcas</a>
+    <a href="/usuarios_administrador">Usuarios</a>
+    <a href="/facturas_administrador">Facturas</a>
 
     {isLoggedIn ? (
       <button
