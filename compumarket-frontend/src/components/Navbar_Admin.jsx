@@ -34,7 +34,7 @@ return (
 <div className="logo">
 <a href="/"><p className="CompuMarket">Admin - CompuMarket+</p></a>
 </div>
-     <nav className={nav-links ${menuActive ? 'active' : ''}} id="navLinks">
+     <nav className={`nav-links ${menuActive ? 'active' : ''}`} id="navLinks">
     <a href="/productos_administrador">Productos</a>
     <a href="/categorias_administrador">Categorias</a>
     <a href="/marcas_administrador">Marcas</a>
