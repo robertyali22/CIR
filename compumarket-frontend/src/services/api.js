@@ -12,8 +12,15 @@ export const obtenerProductos = async (filtros = {}) => {
     if (!response.ok) {
       throw new Error('Error al obtener productos');
     }
+
     const data = await response.json();
-    return data;
+
+    if (Array.isArray(data)) {
+      return data;
+    } else {
+      console.error('⚠️ La respuesta no es un arreglo:', data);
+      return [];
+    }
   } catch (error) {
     console.error("❌ Error en la petición:", error);
     return [];

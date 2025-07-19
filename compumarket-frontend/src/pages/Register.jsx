@@ -36,6 +36,16 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const esContrasenaSegura = (contrasena) => {
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        return regex.test(contrasena);
+      };
+      if (!esContrasenaSegura(formData.contrasena)) {
+        alert("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo");
+        return;
+      }
+
+
       await axios.post("http://localhost:3001/api/usuarios", formData);
       alert("✅ Usuario registrado correctamente");
       navigate("/login"); // <-- redirige al login después del registro
@@ -127,6 +137,7 @@ function Register() {
                 required
                 style={inputStyle}
               />
+
             </div>
 
             <div>
@@ -155,7 +166,7 @@ function Register() {
               />
             </div>
           </div>
-
+          
           <button
             className="agregar"
             type="submit"

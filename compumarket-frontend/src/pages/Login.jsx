@@ -22,19 +22,29 @@ function Login() {
     try {
       const res = await axios.post('http://localhost:3001/api/usuarios/login', {
         correo,
-        contrasena: contraseña, // aseguramos que se mande como "contrasena" sin ñ
+        contrasena: contraseña,
       });
 
-      // Guardar datos del usuario si es necesario
-      localStorage.setItem('usuario', JSON.stringify(res.data.usuario));
+      const usuario = res.data.usuario;
+
+      // Guardar en localStorage
+      localStorage.setItem('usuario', JSON.stringify(usuario));
+      localStorage.setItem('userId', usuario.id_usuario);
 
       setMensaje('Inicio de sesión exitoso');
       alert('✅ ¡Bienvenido!');
-      navigate('/productos');
+
+      // Redirigir según el rol
+      if (usuario.rol === 'admin') {
+        navigate('/productos_administrador');
+      } else {
+        navigate('/productos');
+      }
     } catch (err) {
       setMensaje(err.response?.data?.message || 'Error al iniciar sesión');
     }
   };
+
 
   const toggleMenu = () => {
     document.getElementById("navLinks").classList.toggle("active");

@@ -3,6 +3,9 @@ const Usuario = require('../models/Usuario');
 const UsuarioDAO = require('../dao/usuarioDAO');
 
 const usuarioController = {
+  
+
+
   async registrarUsuario(req, res) {
     try {
       const datos = req.body;
@@ -17,8 +20,19 @@ const usuarioController = {
         return res.status(409).json({ message: 'El correo ya está registrado' });
       }
 
-      usuario.contrasena = await bcrypt.hash(usuario.contrasena, 10);
+      function esContrasenaSegura(contrasena) {
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        return regex.test(contrasena);
+      }
+      if (!esContrasenaSegura(usuario.contrasena)) {
+        return res.status(400).json({
+          message: 'La contraseña debe tener mínimo 8 caracteres, al menos una mayúscula, una minúscula, un número y un símbolo'
+        });
+      }
 
+
+      usuario.contrasena = await bcrypt.hash(usuario.contrasena, 10);
+      usuario.rol = 'cliente';
       await UsuarioDAO.crear(usuario);
       res.status(201).json({ message: 'Usuario registrado correctamente' });
     } catch (error) {

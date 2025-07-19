@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './todo.css';
 import { FaTiktok, FaInstagram, FaFacebook, FaShoppingCart, FaPhoneAlt } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
@@ -6,10 +6,10 @@ import { MdLogout, MdMailOutline } from "react-icons/md";
 import { FaLocationDot, FaPlus } from "react-icons/fa6";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 function Pagos() {
-  const [menuActivo, setMenuActivo] = useState(false);
-  const toggleMenu = () => setMenuActivo(!menuActivo);
+  const navigate = useNavigate();
 
   const [direccion, setDireccion] = useState('');
   const [ciudad, setCiudad] = useState('');
@@ -21,13 +21,71 @@ function Pagos() {
   const [fechaExp, setFechaExp] = useState('');
   const [cvv, setCvv] = useState('');
 
-  const realizarPago = () => {
-    console.log('Datos de envío y pago enviados:', {
-      direccion, ciudad, region, codigoPostal, metodoPago,
-      nombreTarjeta, numeroTarjeta, fechaExp, cvv
-    });
-    alert("✅ Pago procesado (simulado)");
+  const [carrito, setCarrito] = useState([]);
+  const [precioTotal, setPrecioTotal] = useState(0);
+
+  const id_usuario = localStorage.getItem('userId');
+
+  useEffect(() => {
+    const obtenerCarrito = async () => {
+      try {
+        const res = await fetch(`http://localhost:3001/api/carrito/${id_usuario}`);
+        const data = await res.json();
+
+        if (data && data.productos) {
+          setCarrito(data.productos);
+
+          const total = data.productos.reduce(
+            (acc, prod) => acc + prod.precio * prod.cantidad,
+            0
+          );
+          setPrecioTotal(total);
+        }
+      } catch (error) {
+        console.error('Error al obtener carrito:', error);
+      }
+    };
+
+    obtenerCarrito();
+  }, [id_usuario]);
+
+  const realizarPago = async () => {
+    try {
+      const res = await fetch('http://localhost:3001/api/facturas/registrar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id_usuario,
+          direccion,
+          ciudad,
+          region,
+          codigo_postal: codigoPostal,
+          metodo_pago: metodoPago,
+          nombre_tarjeta: nombreTarjeta,
+          numero_tarjeta: numeroTarjeta,
+          cvv,
+          carrito,
+          precioTotal
+        })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert('✅ Factura registrada correctamente');
+        navigate('/'); // redirige a página principal
+      } else {
+        alert('❌ Error: ' + data.mensaje);
+      }
+    } catch (error) {
+      console.error('Error al registrar la factura:', error);
+      alert('Error al procesar el pago');
+    }
   };
+
+
 
   return (
     <div>
